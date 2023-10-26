@@ -10,22 +10,25 @@ function draw() {
   let len = 20;
   let red = 0;
   let blue = 0;
-  
+  let green = 0;
+    
   let t = frameCount * 0.005;
-  let t2 = frameCount * 0.05;
   
   for (let x = 0; x < width; x += gap) {
     for (let y = 0; y < height; y += gap) {
       let startX = x;
       let startY = y;
 
-      red += 0.001;
-      blue += 0.003;
+      red += 0.005;
+      blue += 0.007;
+      green += 0.003;
 
       for (let j = 0; j < 20; j++) {
-        let ncolor = noise(red, blue) * 255;
+        let ncolor = noise(red) * 255;
+        let ncolor2 = noise(blue) * 255;
+        let ncolor3 = noise(green) * 255;
 
-        stroke(ncolor*t,0,ncolor*t2,ncolor);
+        stroke(ncolor*t,ncolor3,ncolor2*t,ncolor);
         strokeWeight(0.1)
 
         let nx = noise(x * angle, y * angle,t);
