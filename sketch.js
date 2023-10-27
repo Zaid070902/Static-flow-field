@@ -8,9 +8,9 @@ function draw() {
   let angle = 0.004;
   let gap = 35;
   let len = 20;
-  let red = 5;
-  let blue =5;
-  let green = 5;
+  let red = 20;
+  let blue = 20;
+  let green = 20;
     
   let t = frameCount * 0.005;
   
@@ -19,9 +19,9 @@ function draw() {
       let startX = x;
       let startY = y;
 
-      red += 0.005;
-      blue += 0.007;
-      green += 0.003;
+        red += 0.005;
+        blue += 0.007;
+        green += 0.003;
 
       for (let j = 0; j < 20; j++) {
         let ncolor = noise(red) * 255;
