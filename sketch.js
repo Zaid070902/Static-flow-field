@@ -6,11 +6,11 @@ function draw() {
   background(0, 0, 0);
 
   let angle = 0.004;
-  let gap = 40;
+  let gap = 35;
   let len = 20;
-  let red = 0;
-  let blue = 0;
-  let green = 0;
+  let red = 5;
+  let blue =5;
+  let green = 5;
     
   let t = frameCount * 0.005;
   
@@ -28,8 +28,8 @@ function draw() {
         let ncolor2 = noise(blue) * 255;
         let ncolor3 = noise(green) * 255;
 
-        stroke(ncolor,ncolor3,ncolor2,ncolor);
-        strokeWeight(0.1)
+        stroke(ncolor,ncolor3,ncolor2,100);
+        strokeWeight(0.2)
 
         let nx = noise(x * angle, y * angle,t);
         let ang = nx * 3.14 * 4;
