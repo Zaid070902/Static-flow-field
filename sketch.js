@@ -28,7 +28,7 @@ function draw() {
         let ncolor2 = noise(blue) * 255;
         let ncolor3 = noise(green) * 255;
 
-        stroke(ncolor*t,ncolor3,ncolor2*t,ncolor);
+        stroke(ncolor,ncolor3,ncolor2,ncolor);
         strokeWeight(0.1)
 
         let nx = noise(x * angle, y * angle,t);
