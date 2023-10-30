@@ -28,7 +28,7 @@ function draw() {
         let ncolor2 = noise(blue) * 255;
         let ncolor3 = noise(green) * 255;
 
-        stroke(ncolor,ncolor3,ncolor2,100);
+        stroke(ncolor,ncolor3,ncolor2,80);
         strokeWeight(0.2)
 
         let nx = noise(x * angle, y * angle,t);
@@ -37,8 +37,15 @@ function draw() {
         let newY = cos(ang) * len + y;
         line(x, y, newX, newY);
 
-        x = newX;
-        y = newY;
+        let cursorX = mouseX;
+        let cursorY = mouseY;
+        let area = 300;
+
+        let distance = dist(cursorX, cursorY, x, y);
+        if (distance < area) {
+          x = newX;
+          y = newY;  
+        }
       } 
       x = startX;
       y = startY;
