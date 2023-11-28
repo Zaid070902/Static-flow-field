@@ -1,9 +1,11 @@
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight);  
 }
 
+let clickedPoints = [];
+
 function draw() {
-  background(0, 0, 0);
+  background(5, 0, 5);
 
   let angle = 0.004;
   let gap = 35;
@@ -11,7 +13,7 @@ function draw() {
   let red = 20;
   let blue = 20;
   let green = 20;
-    
+  
   let t = frameCount * 0.005;
   
   for (let x = 0; x < width; x += gap) {
@@ -19,36 +21,42 @@ function draw() {
       let startX = x;
       let startY = y;
 
-        red += 0.005;
-        blue += 0.007;
-        green += 0.003;
+      red += 0.001;
+      blue += 0.005;
+      green += 0.01;
 
       for (let j = 0; j < 20; j++) {
         let ncolor = noise(red) * 255;
         let ncolor2 = noise(blue) * 255;
         let ncolor3 = noise(green) * 255;
 
-        stroke(ncolor,ncolor3,ncolor2,80);
+        stroke(ncolor, ncolor3, ncolor2, ncolor);
         strokeWeight(0.2)
 
-        let nx = noise(x * angle, y * angle,t);
+        let nx = noise(x * angle, y * angle, t);
         let ang = nx * 3.14 * 4;
         let newX = sin(ang) * len + x;
         let newY = cos(ang) * len + y;
         line(x, y, newX, newY);
 
-        let cursorX = mouseX;
-        let cursorY = mouseY;
-        let area = 300;
+        for (let i = 0; i < clickedPoints.length; i++) {
+          let clickedX = clickedPoints[i].x;
+          let clickedY = clickedPoints[i].y;
 
-        let distance = dist(cursorX, cursorY, x, y);
-        if (distance < area) {
-          x = newX;
-          y = newY;  
+          let d = dist(clickedX, clickedY, x, y);
+          let area = 250;
+          if (d < area) {
+            x = newX;
+            y = newY;
+          }
         }
-      } 
+      }
       x = startX;
       y = startY;
     }
   }
+}
+
+function mouseClicked() {
+  clickedPoints.push(createVector(mouseX, mouseY));
 }
